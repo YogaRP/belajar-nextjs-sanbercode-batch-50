@@ -15,7 +15,9 @@ export default function Layout({ children, metaTitle, metaDescription }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <p>Content</p>
+      <div className="bg-fuchsia-500">
+        <p className="text-3xl font-bold underline ">Ini Pake Tailwind CSS</p>
+      </div>
       <Footer />
     </>
   );
