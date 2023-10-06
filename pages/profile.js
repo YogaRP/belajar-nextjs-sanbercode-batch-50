@@ -1,10 +1,10 @@
 import Layout from "@/layouts";
 
-export default function Home() {
+export default function Profile() {
   return (
     <>
       <Layout>
-        <p className="bg-fuchsia-500">Home</p>
+        <p className="bg-orange-500">Profile</p>
       </Layout>
     </>
   );

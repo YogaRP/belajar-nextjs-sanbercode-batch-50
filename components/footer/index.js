@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
 
 export default function Footer() {
-  return <div className={styles.footer}>Ini Pakai Module CSS</div>;
+  return <div className={styles.footer_bg}>Ini Pakai Module CSS</div>;
 }
