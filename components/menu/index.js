@@ -14,9 +14,14 @@ export default function Menu() {
             Profile
           </Link>
         </li>
-        <li>
+        <li className="mr-2">
           <Link className="text-blue-500 hover:text-blue-800" href={"/users"}>
             Users
+          </Link>
+        </li>
+        <li>
+          <Link className="text-blue-500 hover:text-blue-800" href={"/notes"}>
+            Notes
           </Link>
         </li>
       </ul>
