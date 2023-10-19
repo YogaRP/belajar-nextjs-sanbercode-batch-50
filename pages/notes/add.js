@@ -1,3 +1,4 @@
+import { useMutation } from "@/hooks/useMutation";
 import {
   Grid,
   GridItem,
@@ -15,6 +16,7 @@ import { useEffect, useState } from "react";
 const LayoutComponent = dynamic(() => import("@/layouts"));
 
 export default function AddNotes() {
+  const { mutate } = useMutation();
   const router = useRouter();
   const [notes, setNotes] = useState({
     title: "",
@@ -22,21 +24,12 @@ export default function AddNotes() {
   });
 
   const handleSubmit = async () => {
-    try {
-      const response = await fetch(
-        "https://paace-f178cafcae7b.nevacloud.io/api/notes",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(notes),
-        }
-      );
-      const result = await response.json();
-      if (result?.success) {
-        router.push("/notes");
-      }
-    } catch (error) {
-      console.log(error);
+    const response = await mutate({
+      url: "https://paace-f178cafcae7b.nevacloud.io/api/notes",
+      payload: notes,
+    });
+    if (response?.success) {
+      router.push("/notes");
     }
   };
   return (
