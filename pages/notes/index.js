@@ -1,4 +1,5 @@
 import { useQueries } from "@/hooks/useQueries";
+import fetcher from "@/utils/fetcher";
 import {
   Box,
   Button,
@@ -16,14 +17,19 @@ import {
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 const LayoutComponent = dynamic(() => import("@/layouts"));
 
 export default function Notes() {
-  const { data: notes, isLoading } = useQueries({
-    prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/notes",
-  });
-  console.log(notes);
+  // const { data: notes, isLoading } = useQueries({
+  //   prefixUrl: "https://paace-f178cafcae7b.nevacloud.io/api/notes",
+  // });
+  const { data: notes, isLoading } = useSWR(
+    "https://paace-f178cafcae7b.nevacloud.io/api/notes",
+    fetcher,
+    { revalidateOnFocus: true }
+  );
   const router = useRouter();
 
   const HandleDelete = async (id) => {
